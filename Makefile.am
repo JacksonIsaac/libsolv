@@ -1,2 +1,2 @@
-SUBDIRS = src ext bindings
 ACLOCAL_AMFLAGS = -I m4
+SUBDIRS = src ext bindings
