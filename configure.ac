@@ -1,6 +1,7 @@
 AC_INIT([libsolv],[0.6.11],[macports-dev@lists.macosforge.org])
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror])
+#AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects])
 AM_PROG_AR
 LT_INIT
 AC_PROG_CC
