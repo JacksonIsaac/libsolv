@@ -1,18 +1,16 @@
 AC_INIT([libsolv],[0.6.11],[macports-dev@lists.macosforge.org])
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign -Wall -Werror])
+AM_INIT_AUTOMAKE([foreign -Wall -Werror subdir-objects])
 AM_PROG_AR
 LT_INIT
 AC_PROG_CC
 
 # Set swig Macros
-AX_PKG_SWIG(3.0.5)
-SWIG_ENABLE_CXX
-SWIG_MULTI_MODULE_SUPPORT
-SWIG_TCL
+AX_PKG_SWIG
 
 # Set Tcl Macros
-AX_PROG_TCL([8.5])
+SC_PATH_TCLCONFIG
+SC_LOAD_TCLCONFIG
 
 # Check function exists or not
 AC_CHECK_FUNCS([qsort_r __qsort_r strchrnul fopencookie funopen])
