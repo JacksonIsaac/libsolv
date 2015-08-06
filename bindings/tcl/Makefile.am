@@ -1,7 +1,14 @@
-AUTOMAKE_OPTIONS = subdir-objects
+noinst_LTLIBRARIES = libsolver.la
+noinstdir = /opt/libsolv
 
-lib_LTLIBRARIES = libsolver.la
-libdir = /opt/libsolv
+noinst_DATA = $(noinstdir)/solv-@VERSION@.dylib
+CLEANFILES = $(noinstdir)/solv-@VERSION@.dylib
+
+$(noinstdir)/solv-@VERSION@.dylib: $(noinstdir)/libsolver.dylib
+	cp $< $@
+
+AUTOMAKE_OPTIONS = subdir-objects
+#lib_LTLIBRARIES = libsolver.la
 
 libsolver_la_SOURCES = solv_tcl.c
 libsolver_la_CPPFLAGS = -I$(srcdir)/../../src -I../../src -I$(srcdir)/../../ext -I../../ext $(TCL_INCLUDE_SPEC)
