@@ -5,6 +5,8 @@ AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AM_PROG_AR
 LT_INIT
 AC_PROG_CC
+AC_PROG_EGREP
+AC_PROG_AWK
 
 # Set swig Macros
 AX_PKG_SWIG
@@ -12,6 +14,10 @@ AX_PKG_SWIG
 # Set Tcl Macros
 SC_PATH_TCLCONFIG
 SC_LOAD_TCLCONFIG
+AC_SUBST([TCL_SHLIB_SUFFIX])
+AC_SUBST([TCL_EXEC_PREFIX])
+AC_SUBST([TCL_MAJOR_VERSION])
+AC_SUBST([TCL_VERSION])
 
 # Check function exists or not
 AC_CHECK_FUNCS([qsort_r __qsort_r strchrnul fopencookie funopen])
