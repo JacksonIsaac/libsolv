@@ -16,7 +16,6 @@ libsolver_la_LIBADD = ../../src/libsolv.la ../../ext/libsolvext.la
 solv.tm: solv.tm.in
 	sed -e "s/__VERSION__/@VERSION@/g" $< >$@
 
-#solv_tcl_SWIGFLAGS = -DHAVE_FUNOPEN -namespace -pkgversion $(VERSION)
 solv_tcl_SWIGFLAGS = -namespace -pkgversion @VERSION@
 solv_tcl.c: ../solv.i
 	$(SWIG) $(solv_tcl_SWIGFLAGS) -tcl -I$(srcdir)/../../src -o $@ $<
