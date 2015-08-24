@@ -9,6 +9,7 @@ AC_PROG_AWK
 
 # Set swig Macros
 AX_PKG_SWIG
+AM_CONDITIONAL([HAVE_SWIG], [test "$SWIG" != ""])
 
 # Set Tcl Macros
 SC_PATH_TCLCONFIG

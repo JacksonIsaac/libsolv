@@ -13,9 +13,17 @@ libsolver_la_LDFLAGS = -avoid-version -shared -rpath `pwd` $(TCL_LIB_SPEC)
 libsolver_la_LIBADD = ../../src/libsolv.la ../../ext/libsolvext.la
 
 # Create Tcl module to load libsolv.
-solv.tm: solv.tm.in
+solv-@VERSION@.tm: solv.tm.in
 	sed -e "s/__VERSION__/@VERSION@/g" $< >$@
 
 solv_tcl_SWIGFLAGS = -namespace -pkgversion @VERSION@
 solv_tcl.c: ../solv.i
+if HAVE_SWIG
 	$(SWIG) $(solv_tcl_SWIGFLAGS) -tcl -I$(srcdir)/../../src -o $@ $<
+else
+	@echo "Building ${SWIG_SRCS} requires swig, which you apparently did not have installed when configuring MacPorts." >&2
+	@echo "Please install swig and re-run configure" >&2
+	@echo "To use this SWIG, run configure as follows:" >&2
+	@echo "    SWIG=/opt/swig/bin/swig ./configure --your-usual-config-flags" >&2
+	@exit 1
+endif
