@@ -1,7 +1,7 @@
 noinst_LTLIBRARIES = libsolver.la
 solvdir = @TCL_EXEC_PREFIX@/lib/tcl@TCL_MAJOR_VERSION@/@TCL_VERSION@
 
-solv_DATA = solv-@VERSION@@TCL_SHLIB_SUFFIX@ solv.tm
+solv_DATA = solv-@VERSION@@TCL_SHLIB_SUFFIX@ solv-@VERSION@.tm
 CLEANFILES = solv-@VERSION@@TCL_SHLIB_SUFFIX@
 
 solv-@VERSION@@TCL_SHLIB_SUFFIX@: libsolver.la
