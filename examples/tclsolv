@@ -260,6 +260,7 @@ proc repo_repomd_add_ext {selfName repodata what ext} {
 proc repo_repomd_add_exts {selfName} {
   upvar $selfName self
   set repodata [$self(handle) add_repodata 0]
+  $repodata extend_to_repo
   repo_repomd_add_ext self $repodata "filelists" "FL"
   $repodata internalize
 }
@@ -383,6 +384,7 @@ proc repo_susetags_add_ext {selfName repodata what ext} {
 proc repo_susetags_add_exts {selfName} {
   upvar $selfName self
   set repodata [$self(handle) add_repodata 0]
+  $repodata extend_to_repo
   repo_susetags_add_ext self $repodata "packages.FL" "FL"
   repo_susetags_add_ext self $repodata "packages.FL.gz" "FL"
   $repodata internalize
@@ -738,7 +740,7 @@ foreach cl [$trans classify [expr $solv::Transaction_SOLVER_TRANSACTION_SHOW_OBS
     set cltype [$cl cget -type]
     if {$cltype == $solv::Transaction_SOLVER_TRANSACTION_UPGRADED || $cltype ==$solv::Transaction_SOLVER_TRANSACTION_DOWNGRADED} {
       set op [$trans othersolvable $p]
-      puts [format {  - %s -> %s} [$p str] [$p str]]
+      puts [format {  - %s -> %s} [$p str] [$op str]]
     } else {
       puts [format {  - %s} [$p str]]
     }
